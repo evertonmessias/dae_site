@@ -2,17 +2,57 @@
 
 <?php $categories = get_terms('category', array('order' => 'DESC')); ?>
 
-<!-- ======= Hero Section ======= -->
-<section id="hero" style="background: url('<?php echo get_option('home_input_31'); ?>') center center;" class="d-flex align-items-center">
-  <div class="container" data-aos="zoom-out" data-aos-delay="100">
-    <h1><span><?php echo get_option('home_input_1'); ?></span>&emsp;<?php echo get_option('home_input_32'); ?></h1>
-    <h2>&ensp;</h2>
-    <div class="d-flex">
-      <a href="#about" class="btn-get-started scrollto">Sobre Nós</a>
-      <a href="<?php echo get_option('home_input_33'); ?>" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Assista ao Vídeo <i class="icofont-play-alt-2"></i></a>
+<section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>        
+        
+        <div class="carousel-inner" role="listbox">
+          <?php
+
+          $scr = strtolower($_SERVER["HTTP_USER_AGENT"]);            
+          $isMob = is_numeric(strpos($scr, "mobile"));
+
+          if($isMob == 1){
+            $cat = get_option('home_input_33');
+          }else{
+            $cat = get_option('home_input_32');
+          }
+            
+          $x = 1;
+          $args = array(
+            'post_type' => 'post',
+            'posts_per_page' =>  get_option('home_input_31'),
+            'category_name' => $cat,
+            'order' => 'DESC'
+          );
+          $loop = new WP_Query($args);
+          foreach ($loop->posts as $post) {
+            if (has_post_thumbnail()) {
+              $imagem = get_the_post_thumbnail_url(get_the_ID(), 'full');
+            } else {
+              $imagem = SITEPATH . "assets/img/semimagem.png";
+            }
+          ?>
+            <!-- Slides -->
+            <div class="carousel-item <?php if ($x == 1) echo 'active'; ?>" style="background-image: url(<?php echo $imagem; ?>)"></div>
+          <?php $x++;
+          }
+          wp_reset_postdata();
+          ?>
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+      </div>
     </div>
-  </div>
-</section><!-- End Hero -->
+  </section><!-- End Hero -->
 
 
 <main id="main" class="front">

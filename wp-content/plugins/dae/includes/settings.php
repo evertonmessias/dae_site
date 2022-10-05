@@ -1,6 +1,6 @@
 <?php
 //Settings *************************************************
-function portal_page_html()
+function home_page_html()
 { ?>
 	<div class="settings-dae">
 		<h1 class="title">Configurações da Pagina Inicial</h1>
@@ -30,34 +30,51 @@ function portal_page_html()
 			<span>(Ideal size: 300x300 px)</span>
 			
 
-			<br><br><!-- Slides *************************************** -->
-			<hr>
+			<br><br><!-- Número de Slides******************************* -->
+			<hr>			
+				<h3 class="title">Número de Slides: </h3>
+				
+				<input type="number" class="nslide" onKeyDown="return false" min="1" max="10" id="home_input_31" name="home_input_31" value="<?php echo get_option('home_input_31'); ?>" />
+			
+			<br><!-- Categoria dos Slides Desktop ******************************* -->
+			<label>
+				<h3 class="title">Categoria dos Slides Desktop: </h3>
+				<select id="home_input_32" name="home_input_32">
+					<option selected hidden><?php echo get_option('home_input_32'); ?></option>
+					<?php
+					$argsCat = array(
+						'post_type' => 'post',
+						'orderby'       => 'name',
+						'order'         => 'ASC'
+					);
+					$categories = get_terms('category', $argsCat);
+					foreach ($categories as $category) {
+						echo '<option>' . $category->slug . '</option>';
+					}
+					?>
+				</select>
+			</label>
 
-			<h3 class="title">Slides:</h3>
+			<br><!-- Categoria dos Slides Mobile ******************************* -->
+			<label>
+				<h3 class="title">Categoria dos Slides Mobile: </h3>
+				<select id="home_input_33" name="home_input_33">
+					<option selected hidden><?php echo get_option('home_input_33'); ?></option>
+					<?php
+					$argsCat = array(
+						'post_type' => 'post',
+						'orderby'       => 'name',
+						'order'         => 'ASC'
+					);
+					$categories = get_terms('category', $argsCat);
+					foreach ($categories as $category) {
+						echo '<option>' . $category->slug . '</option>';
+					}
+					?>
+				</select>
+			</label>
+			<br><span>(Altera qual a <b>Categoria</b> do Post é exibida nos Slides)</span>
 
-			<?php
-			$home31 = get_option('home_input_31'); ?>			
-			<table>
-				<tr>
-					<td><a href="#" onclick="upload_image(1,31);" class="button button-secondary"><?php _e('Upload Image'); ?></a></td>
-					<td><input type="text" name="home_input_31" id="home_input_31" value="<?php echo $home31; ?>" /></td>
-					<td>&emsp;<a href="<?php echo $home31; ?>" target="_blank"><img style="height:30px" id="preview_home_input_31" alt="preview" title="preview" src="<?php echo $home31; ?>" /></a></td>
-				</tr>
-				<tr>
-					<td>
-						<div>Descrição do Slide</div>
-					</td>
-					<td><input type="text" id="home_input_32" name="home_input_32" value="<?php echo get_option('home_input_32'); ?>" /></td>
-				</tr>				
-				<tr>
-					<td>
-						<div>URL do Vídeo</div>
-					</td>
-					<td><input type="text" id="home_input_33" name="home_input_33" value="<?php echo get_option('home_input_33'); ?>" /></td>
-				</tr>
-			</table><br>			
-
-			<br><span>(<b>Slide</b>; Ideal size: 1800x750 px)</span>
 
 
 			<br><br><!-- Sobre ********************************** -->
@@ -282,11 +299,11 @@ function portal_page_html()
 <?php
 }
 
-function portal_options_page()
+function home_options_page()
 {
-	add_submenu_page('dae', 'Pagina Inicial', 'Pagina Inicial', 'edit_posts', 'pagina-inicial', 'portal_page_html', 1);
+	add_submenu_page('dae', 'Pagina Inicial', 'Pagina Inicial', 'edit_posts', 'pagina-inicial', 'home_page_html', 1);
 }
-add_action('admin_menu', 'portal_options_page');
+add_action('admin_menu', 'home_options_page');
 
 
 
@@ -313,6 +330,7 @@ function home_settings31()
 }
 add_action('admin_init', 'home_settings31');
 
+
 function home_settings32()
 {
 	add_option('home_input_32');
@@ -320,12 +338,14 @@ function home_settings32()
 }
 add_action('admin_init', 'home_settings32');
 
+
 function home_settings33()
 {
 	add_option('home_input_33');
 	register_setting('home_option_grupo', 'home_input_33');
 }
 add_action('admin_init', 'home_settings33');
+
 
 function home_settings4()
 {

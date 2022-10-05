@@ -10,6 +10,32 @@
     }
   });
 
+
+    /**
+   * Easy selector helper function
+   */
+     const select = (el, all = false) => {
+      el = el.trim()
+      if (all) {
+        return [...document.querySelectorAll(el)]
+      } else {
+        return document.querySelector(el)
+      }
+    }
+
+    /**
+* Hero carousel indicators
+*/
+let heroCarouselIndicators = select("#hero-carousel-indicators")
+let heroCarouselItems = select('#heroCarousel .carousel-item', true)
+
+heroCarouselItems.forEach((item, index) => {
+  (index === 0) ?
+    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>" :
+    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
+});
+
+
   // Smooth scroll for the navigation menu and links with .scrollto classes
   var scrolltoOffset = $('#header').outerHeight() - 21;
   if (window.matchMedia("(max-width: 991px)").matches) {
@@ -145,7 +171,7 @@
   $('.back-to-top').click(function() {
     $('html, body').animate({
       scrollTop: 0
-    }, 1500, 'easeInOutExpo');
+    }, 100, 'easeInOutExpo');
     return false;
   });
 
