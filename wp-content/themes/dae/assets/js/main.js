@@ -55,7 +55,7 @@ heroCarouselItems.forEach((item, index) => {
 
         $('html, body').animate({
           scrollTop: scrollto
-        }, 1500, 'easeInOutExpo');
+        }, 100, 'easeInOutExpo');
 
         if ($(this).parents('.nav-menu, .mobile-nav').length) {
           $('.nav-menu .active, .mobile-nav .active').removeClass('active');
@@ -80,7 +80,7 @@ heroCarouselItems.forEach((item, index) => {
         var scrollto = $(initial_nav).offset().top - scrolltoOffset;
         $('html, body').animate({
           scrollTop: scrollto
-        }, 1500, 'easeInOutExpo');
+        }, 100, 'easeInOutExpo');
       }
     }
   });

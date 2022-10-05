@@ -58,17 +58,7 @@
 			<a href="/" class="logo mr-auto"><img src="<?php echo get_option('home_input_2'); ?>" alt=""></a>
 
 			<nav class="nav-menu d-none d-lg-block">
-				<?php wp_nav_menu(); ?>				
-				<!--<ul>
-					<li class="active"><a href="/">Inicio</a></li>
-					<li><a href="/#institucional">Institucional</a></li>
-					<li><a href="/#estrutura">Estrutura</a></li>
-					<li><a href="/#servicos">Serviços</a></li>
-					<li><a href="/#editais">Editais</a></li>
-					<li><a href="/#informativo">Informativo</a></li>
-					<li><a href="/#ouvidoria">Ouvidoria</a></li>
-					<li><a href="/#contact">Contato</a></li>
-				</ul>-->
+				<?php wp_nav_menu(); ?>	
 			</nav><!-- .nav-menu -->
 
 		</div>
