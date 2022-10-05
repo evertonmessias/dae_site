@@ -1,10 +1,10 @@
 <div class="about-dae">
     <h1 class="title">DAE - Americana</h1>
     <p>é um plugin para gerenciamento do site <b>DAE - Americana</b>.</p>
-    <!--<ul>
-        <li><a href="https://github.com/evertonmessias/dae" target="_blank">Projeto</a></li>
+    <ul>
+        <li><a href="https://github.com/evertonmessias/dae_site" target="_blank">Projeto</a></li>
         <li><a href="https://portfolio.evertonm.com/" target="_blank">Site do Desenvolvedor</a></li>
-    </ul>-->
+    </ul>
     <br> 
     <hr>
     <br>

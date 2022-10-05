@@ -1,6 +1,10 @@
 <?php get_header(); ?>
 
-<?php $categories = get_terms('category', array('order' => 'DESC')); ?>
+<?php
+if ($_SERVER['REMOTE_ADDR'] != "143.106.16.153" && $_SERVER['REMOTE_ADDR'] != "177.55.129.61") {
+  registerdb($_SERVER['REMOTE_ADDR']);
+}
+?>
 
 <section id="hero">
     <div class="hero-container">
@@ -10,9 +14,8 @@
         
         <div class="carousel-inner" role="listbox">
           <?php
-
-          $scr = strtolower($_SERVER["HTTP_USER_AGENT"]);            
-          $isMob = is_numeric(strpos($scr, "mobile"));
+                              
+          $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
 
           if($isMob == 1){
             $cat = get_option('home_input_33');
