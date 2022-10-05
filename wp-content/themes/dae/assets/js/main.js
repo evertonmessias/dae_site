@@ -8,6 +8,16 @@
         $(this).remove();
       });
     }
+
+
+    $('.icofont-navigation-menu').click(()=>{
+      $('.nav-menu-mobile').show();
+    });
+
+    $('.icofont-close').click(()=>{
+      $('.nav-menu-mobile').hide();
+    });
+
   });
 
 
@@ -108,7 +118,9 @@ heroCarouselItems.forEach((item, index) => {
     });
   });
 
-  // Mobile Navigation
+  // Mobile Navigation 
+
+
   if ($('.nav-menu').length) {
     var $mobile_nav = $('.nav-menu').clone().prop({
       class: 'mobile-nav d-lg-none'

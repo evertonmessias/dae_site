@@ -57,7 +57,18 @@
 
 			<a href="/" class="logo mr-auto"><img src="<?php echo get_option('home_input_2'); ?>" alt=""></a>
 
-			<nav class="nav-menu d-none d-lg-block">
+			<?php
+                              
+          $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
+
+          if($isMob == 1){
+			$mob = "nav-menu-mobile";
+          }else{
+			$mob = "";
+          }
+		  ?>
+
+			<nav class="nav-menu <?php echo $mob; ?>">
 				<?php wp_nav_menu(); ?>	
 			</nav><!-- .nav-menu -->
 
