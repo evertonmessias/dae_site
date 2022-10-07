@@ -139,7 +139,8 @@ add_action('after_setup_theme', 'remove_admin_bar');
 //************* Add Menu
 function register_menu()
 {
-	register_nav_menu('menu_dae', __('menu_dae'));
+	register_nav_menu('dae_nav', __('dae_nav'));
+	register_nav_menu('dae_footer', __('dae_footer'));
 }
 add_action('init', 'register_menu');
 

@@ -88,6 +88,19 @@ function home_page_html()
 				?>
 				
 			</label>
+
+
+			<br><br><!-- Avisos ********************************** -->
+			<hr>
+
+			<label>
+				<h3 class="title">Avisos: </h3>
+				<?php
+				$home5 = get_option('home_input_5'); 
+				wp_editor($home5, 'home_about_box2', array('textarea_name' => 'home_input_5'));
+				?>
+				
+			</label>
 			
 			
 			<br><br><!-- Blocos Links ****************************** -->
@@ -234,19 +247,7 @@ function home_page_html()
 			<br>
 			<br><span>(Ideal size: 100x100 px)</span>
 
-			<br><br><!-- Avisos ********************************** -->
-			<hr>
-
-			<label>
-				<h3 class="title">Avisos: </h3>
-				<?php
-				$home5 = get_option('home_input_5'); 
-				wp_editor($home5, 'home_about_box2', array('textarea_name' => 'home_input_5'));
-				?>
-				
-			</label>
-
-
+			
 			<br><br><!-- Fone *************************************** -->
 			<hr>
 
